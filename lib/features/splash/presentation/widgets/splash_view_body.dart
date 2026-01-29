@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hungry_app/core/utils/app_router.dart';
 
 class SplashViewBody extends StatelessWidget {
   const SplashViewBody({
@@ -19,7 +21,11 @@ class SplashViewBody extends StatelessWidget {
             'assets/images/Hungry_.svg',
           ),
           const Spacer(),
-          Image.asset('assets/images/burger.png'),
+          GestureDetector(
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.kLoginView);
+              },
+              child: Image.asset('assets/images/burger.png')),
         ],
       ),
     );
