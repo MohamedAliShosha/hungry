@@ -3,19 +3,20 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:hungry_app/core/widgets/custom_button.dart';
+import 'package:hungry_app/features/auth/presentation/widgets/custom_auth_button.dart';
 import 'package:hungry_app/core/widgets/custom_text.dart';
 import 'package:hungry_app/core/widgets/custom_text_form_field.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
     super.key,
-    required this.emailController,
-    required this.passwordController,
-  });
+    required TextEditingController emailController,
+    required TextEditingController passwordController,
+  })  : _passwordController = passwordController,
+        _emailController = emailController;
 
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
+  final TextEditingController _emailController;
+  final TextEditingController _passwordController;
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -48,12 +49,12 @@ class _LoginFormState extends State<LoginForm> {
           ),
           const Gap(70),
           CustomTextFormField(
-            controller: widget.emailController,
+            controller: widget._emailController,
             hintText: 'Email Address',
           ),
           const Gap(20),
           CustomTextFormField(
-            controller: widget.passwordController,
+            controller: widget._passwordController,
             hintText: 'Password',
             suffixIcon: const Icon(
               Icons.remove_red_eye,
@@ -61,16 +62,14 @@ class _LoginFormState extends State<LoginForm> {
             isPassword: true,
           ),
           const Gap(30),
-          GestureDetector(
+          CustomAuthButton(
             onTap: () {
               if (_formKey.currentState!.validate()) {
                 // Perform login action
                 log('Login successful');
               }
             },
-            child: const CustomButton(
-              title: 'Login',
-            ),
+            title: 'Login',
           )
         ],
       ),
