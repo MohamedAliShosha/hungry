@@ -28,6 +28,7 @@ class SplashViewBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          // This Gap widget do the same role of SizedBox
           const Gap(280),
           SvgPicture.asset(
             'assets/images/Hungry_.svg',
