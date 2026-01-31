@@ -24,11 +24,11 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  
+
   @override
   void dispose() {
-    widget.emailController.dispose();
-    widget.passwordController.dispose();
+    widget._emailController.dispose();
+    widget._passwordController.dispose();
     super.dispose();
   }
 
