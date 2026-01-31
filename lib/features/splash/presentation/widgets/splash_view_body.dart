@@ -23,7 +23,7 @@ class SplashViewBody extends StatelessWidget {
           const Spacer(),
           GestureDetector(
               onTap: () {
-                GoRouter.of(context).push(AppRouter.kSignupView);
+                GoRouter.of(context).push(AppRouter.kMainView);
               },
               child: Image.asset('assets/images/burger.png')),
         ],
